@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
-import { AIFocus } from "@/components/sections/ai-focus";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { Certifications } from "@/components/sections/certifications";
@@ -19,7 +18,6 @@ export default function Home() {
         <Hero />
         <About />
         <Skills />
-        <AIFocus />
         <Experience />
         <Projects />
         <Certifications />

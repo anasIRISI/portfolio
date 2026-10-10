@@ -236,7 +236,6 @@ function Terminal() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             className="flex-1 bg-transparent outline-none text-gray-100 font-mono caret-green-400"
-            autoFocus
             spellCheck={false}
           />
           <span className="animate-pulse text-green-400">▊</span>
@@ -378,7 +377,7 @@ export function About() {
           >
             <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
               <TerminalIcon className="w-6 h-6 text-primary" />
-              Terminal Interactif
+              Plus sur moi
             </h3>
             <p className="text-muted-foreground">
               Explorez mon profil via la ligne de commande. Tapez <code className="px-2 py-0.5 rounded bg-muted text-primary font-mono text-sm">help</code> pour commencer.
@@ -395,29 +394,7 @@ export function About() {
           transition={{ duration: 0.5 }}
           className="mt-8"
         >
-          <h3 className="text-xl font-bold mb-6 text-center">Mes valeurs</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="group text-center p-6 rounded-xl bg-gradient-to-br from-background to-muted/50 border border-border/40 hover:border-primary/30 hover:shadow-xl transition-all"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors"
-                >
-                  <value.icon className="w-8 h-8 text-primary" />
-                </motion.div>
-                <h4 className="font-bold text-lg mb-2">{value.label}</h4>
-                <p className="text-sm text-muted-foreground">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          
         </motion.div>
       </div>
 

@@ -52,23 +52,44 @@ export function Hero() {
           className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-blue-500/30 via-cyan-500/20 to-transparent rounded-full blur-3xl"
         />
         
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
+        {/* Floating particles with fixed positions */}
+        {[
+          { left: '10%', top: '20%', delay: 0 },
+          { left: '25%', top: '45%', delay: 0.5 },
+          { left: '15%', top: '70%', delay: 1 },
+          { left: '40%', top: '15%', delay: 1.5 },
+          { left: '35%', top: '85%', delay: 2 },
+          { left: '60%', top: '30%', delay: 2.5 },
+          { left: '55%', top: '60%', delay: 3 },
+          { left: '70%', top: '25%', delay: 3.5 },
+          { left: '75%', top: '80%', delay: 4 },
+          { left: '85%', top: '50%', delay: 4.5 },
+          { left: '90%', top: '10%', delay: 0.2 },
+          { left: '20%', top: '55%', delay: 0.7 },
+          { left: '50%', top: '40%', delay: 1.2 },
+          { left: '65%', top: '75%', delay: 1.7 },
+          { left: '30%', top: '90%', delay: 2.2 },
+          { left: '45%', top: '65%', delay: 2.7 },
+          { left: '80%', top: '35%', delay: 3.2 },
+          { left: '12%', top: '40%', delay: 3.7 },
+          { left: '95%', top: '70%', delay: 4.2 },
+          { left: '5%', top: '85%', delay: 4.7 },
+        ].map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-primary/40 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: particle.left,
+              top: particle.top,
             }}
             animate={{
               y: [0, -30, 0],
               opacity: [0, 1, 0],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 3 + (i % 3),
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: particle.delay,
             }}
           />
         ))}
@@ -83,7 +104,7 @@ export function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-6 inline-block"
+              className="mb-6 flex flex-wrap gap-3 justify-center lg:justify-start"
             >
               <span className="inline-flex items-center rounded-full border border-border/40 bg-background/50 backdrop-blur-sm px-4 py-1.5 text-sm font-medium shadow-lg">
                 <span className="relative flex h-2 w-2 mr-2">
@@ -91,6 +112,11 @@ export function Hero() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
                 Disponible pour un stage PFE — 2027
+              </span>
+              
+              <span className="inline-flex items-center rounded-full border border-blue-400/40 bg-blue-500/10 backdrop-blur-sm px-4 py-1.5 text-sm font-medium shadow-lg">
+                <span className="mr-2 text-base">🌍</span>
+                Mobilité internationale
               </span>
             </motion.div>
 
@@ -184,7 +210,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-wrap gap-2 justify-center lg:justify-start"
             >
-              {["React", "Next.js", "Python", "LangChain", "RAG", "GenAI"].map((tech, i) => (
+              {["intelligence artificielle", "développement logiciel", "DevOps"].map((tech, i) => (
                 <motion.span
                   key={tech}
                   initial={{ opacity: 0, scale: 0.8 }}
