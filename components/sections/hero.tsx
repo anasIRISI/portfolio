@@ -226,13 +226,14 @@ export function Hero() {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full h-full"
+                  className="w-full h-full relative"
                 >
                   <Image
                     src="/Photos/photo-portfollio.png"
                     alt="Anas Halloumi"
                     fill
-                    className="object-cover object-[center_20%]"
+                    className="object-cover scale-110 translate-y-7"
+                    style={{ objectPosition: '58% 20%' }}
                     priority
                   />
                 </motion.div>
@@ -244,10 +245,7 @@ export function Hero() {
                 transition={{ duration: 3, repeat: Infinity }}
                 className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-background/90 backdrop-blur-sm border border-border/40 rounded-full px-6 py-3 shadow-xl"
               >
-                <p className="text-sm font-semibold flex items-center gap-2">
-                  <span className="text-2xl">🚀</span>
-                  <span>Innovation & Excellence</span>
-                </p>
+                
               </motion.div>
             </div>
           </motion.div>
