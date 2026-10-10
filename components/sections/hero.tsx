@@ -232,7 +232,7 @@ export function Hero() {
                     src="/Photos/photo-portfollio.png"
                     alt="Anas Halloumi"
                     fill
-                    className="object-cover"
+                    className="object-cover object-[center_20%]"
                     priority
                   />
                 </motion.div>
