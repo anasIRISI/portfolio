@@ -20,7 +20,7 @@ export function Certifications() {
   return (
     <SectionContainer id="certifications" className="bg-muted/30">
       <SectionHeading subtitle="Certifications professionnelles validant mes compétences">
-        Certifications & Formations
+        Certifications 
       </SectionHeading>
 
       {/* Stats en haut */}
