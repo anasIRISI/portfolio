@@ -32,6 +32,11 @@ export const certificationsData: Certification[] = [
     issuer: "365 Data",
   },
   {
+    id: "javascript-udemy",
+    title: "JavaScript - The Complete Guide",
+    issuer: "Udemy",
+  },
+  {
     id: "react-meta",
     title: "React.js",
     issuer: "Meta",
