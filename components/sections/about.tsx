@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { SectionContainer } from "@/components/ui/section-container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Code2, Sparkles, Users, Target, Rocket, Heart } from "lucide-react";
+import { Code2, Sparkles, Users, Target, Rocket, Heart, Terminal as TerminalIcon } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 
 const stats = [
   { label: "Stages", value: "3", suffix: "" },
@@ -37,6 +38,222 @@ const values = [
   { icon: Rocket, label: "Innovation", description: "Technologies modernes" },
   { icon: Heart, label: "Passion", description: "Projets d'impact" },
 ];
+
+// Commandes disponibles pour le terminal
+const terminalCommands: Record<string, string> = {
+  help: `Commandes disponibles:
+  • whoami - Informations personnelles
+  • skills - Compétences techniques
+  • projects - Mes projets
+  • experience - Expériences professionnelles
+  • education - Formation académique
+  • contact - Coordonnées
+  • clear - Effacer le terminal`,
+  
+  whoami: `Anas Halloumi
+👨‍💻 Étudiant Ingénieur en Génie Informatique
+🎓 Université Cadi Ayyad, Marrakech
+🔍 Spécialisation: IA & Développement Logiciel
+🎯 Passionné par l'innovation et les nouvelles technologies
+🚀 Disponible pour stage PFE 2027`,
+
+  skills: `Stack Technique:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔷 Langages: Python, Java, PHP, C, JavaScript, TypeScript
+🔷 Frontend: React.js, Next.js, Tailwind CSS
+🔷 Backend: Spring Boot, FastAPI, Laravel
+🔷 AI/GenAI: LLM, RAG, AI Agents, LangChain, TensorFlow
+🔷 Database: PostgreSQL, MySQL, Redis
+🔷 DevOps: Docker, Git, CI/CD`,
+
+  projects: `Projets Principaux:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🏛️ Assistance Juridique Intelligente
+   → Application web avec RAG et IA générative
+   → Spring Boot, React.js, Gemini API
+
+2. 🕌 Plateforme Patrimoine Marocain
+   → Exploration de monuments historiques
+   → React.js, Django REST, OpenStreetMap, LLM
+
+3. 📱 Marketplace Mobile
+   → Achat/vente de matériel informatique
+   → Android Studio, Firebase, Cloudinary
+
+4. 🚗 Location de Véhicules
+   → Plateforme de réservation web
+   → Laravel, PHP, MySQL, Tailwind CSS`,
+
+  experience: `Expériences Professionnelles:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📍 Polydesign - Tanger (Août-Sept 2026)
+   Ingénieur IA & Développement Web
+   → Chatbot IA, SQL read-only, RAG
+
+📍 3LM - Tunis (Juin-Juillet 2026)
+   Ingénieur IA & Développement Web
+   → App énergétique marché belge, LLM
+
+📍 Aptiv - Tanger (Juillet-Août 2025)
+   Ingénieur en Développement Web
+   → Digitalisation services internes`,
+
+  education: `Formation Académique:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎓 Cycle d'Ingénieur - Génie Informatique
+   Université Cadi Ayyad, Marrakech
+   2024 - 2027 (en cours)
+   
+🎓 Classes Préparatoires CPGE
+   Mathématiques & Physique
+   2022 - 2024`,
+
+  contact: `Coordonnées:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📧 Email: anashllmtct8@gmail.com
+💼 LinkedIn: linkedin.com/in/anas-halloumi
+🐙 GitHub: github.com/anasIRISI
+📍 Localisation: Marrakech, Maroc`,
+};
+
+function Terminal() {
+  const [input, setInput] = useState("");
+  const [history, setHistory] = useState<Array<{ type: "command" | "output"; content: string }>>([
+    { type: "output", content: "Bienvenue sur mon portfolio interactif! 👋" },
+    { type: "output", content: "Tapez 'help' pour voir les commandes disponibles." },
+  ]);
+  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
+  }, [history]);
+
+  const handleCommand = (cmd: string) => {
+    const trimmedCmd = cmd.trim().toLowerCase();
+    
+    if (!trimmedCmd) return;
+
+    // Ajouter la commande à l'historique
+    setHistory((prev) => [...prev, { type: "command", content: `$ ${cmd}` }]);
+    setCommandHistory((prev) => [...prev, cmd]);
+    setHistoryIndex(-1);
+
+    // Traiter la commande
+    if (trimmedCmd === "clear") {
+      setTimeout(() => {
+        setHistory([
+          { type: "output", content: "Terminal effacé. Tapez 'help' pour voir les commandes." },
+        ]);
+      }, 100);
+    } else if (terminalCommands[trimmedCmd]) {
+      setHistory((prev) => [...prev, { type: "output", content: terminalCommands[trimmedCmd] }]);
+    } else {
+      setHistory((prev) => [
+        ...prev,
+        { type: "output", content: `❌ Commande '${cmd}' non reconnue. Tapez 'help' pour voir les commandes disponibles.` },
+      ]);
+    }
+
+    setInput("");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleCommand(input);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (commandHistory.length > 0) {
+        const newIndex = historyIndex === -1 ? commandHistory.length - 1 : Math.max(0, historyIndex - 1);
+        setHistoryIndex(newIndex);
+        setInput(commandHistory[newIndex]);
+      }
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex !== -1) {
+        const newIndex = Math.min(commandHistory.length - 1, historyIndex + 1);
+        setHistoryIndex(newIndex);
+        setInput(newIndex === commandHistory.length - 1 ? "" : commandHistory[newIndex]);
+      }
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="relative rounded-2xl border border-border/40 bg-[#0D1117] overflow-hidden shadow-2xl"
+    >
+      {/* Terminal Header */}
+      <div className="flex items-center justify-between px-4 py-3 bg-[#161B22] border-b border-border/20">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full bg-green-500" />
+          </div>
+          <div className="flex items-center gap-2 ml-4">
+            <TerminalIcon className="w-4 h-4 text-gray-400" />
+            <span className="text-sm text-gray-400 font-mono">anas@portfolio:~</span>
+          </div>
+        </div>
+        <div className="text-xs text-gray-500 font-mono">Interactive CLI</div>
+      </div>
+
+      {/* Terminal Body */}
+      <div
+        ref={outputRef}
+        className="p-4 h-[400px] overflow-y-auto font-mono text-sm custom-scrollbar"
+        onClick={() => inputRef.current?.focus()}
+      >
+        {history.map((item, index) => (
+          <div key={index} className="mb-2">
+            {item.type === "command" ? (
+              <div className="text-green-400 flex items-center gap-2">
+                <span className="text-purple-400">➜</span>
+                {item.content}
+              </div>
+            ) : (
+              <div className="text-gray-300 whitespace-pre-wrap">{item.content}</div>
+            )}
+          </div>
+        ))}
+
+        {/* Input Line */}
+        <div className="flex items-center gap-2 text-green-400">
+          <span className="text-purple-400">➜</span>
+          <span className="text-blue-400">$</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-1 bg-transparent outline-none text-gray-100 font-mono caret-green-400"
+            autoFocus
+            spellCheck={false}
+          />
+          <span className="animate-pulse text-green-400">▊</span>
+        </div>
+      </div>
+
+      {/* Terminal Footer Hint */}
+      <div className="px-4 py-2 bg-[#161B22] border-t border-border/20 flex items-center justify-between text-xs text-gray-500">
+        <span>💡 Astuce: Utilisez ↑↓ pour naviguer dans l&apos;historique</span>
+        <span className="flex items-center gap-2">
+          <kbd className="px-2 py-0.5 rounded bg-[#0D1117] border border-border/20">Entrée</kbd>
+          pour exécuter
+        </span>
+      </div>
+    </motion.div>
+  );
+}
 
 export function About() {
   return (
@@ -150,6 +367,26 @@ export function About() {
           </motion.div>
         </div>
 
+        {/* Terminal Interactif */}
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-6"
+          >
+            <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+              <TerminalIcon className="w-6 h-6 text-primary" />
+              Terminal Interactif
+            </h3>
+            <p className="text-muted-foreground">
+              Explorez mon profil via la ligne de commande. Tapez <code className="px-2 py-0.5 rounded bg-muted text-primary font-mono text-sm">help</code> pour commencer.
+            </p>
+          </motion.div>
+          <Terminal />
+        </div>
+
         {/* Values Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -183,6 +420,23 @@ export function About() {
           </div>
         </motion.div>
       </div>
+
+      {/* Custom Scrollbar Styles */}
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #0D1117;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #30363D;
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #484F58;
+        }
+      `}</style>
     </SectionContainer>
   );
 }
