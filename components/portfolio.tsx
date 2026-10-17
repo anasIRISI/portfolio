@@ -11,6 +11,7 @@ import { AcademicJourney, CommunityHighlights } from "@/components/sections/acad
 import { CertificationShowcase } from "@/components/sections/certification-showcase";
 
 import { SkillDomains } from "@/components/sections/skill-domains";
+import { AboutProfile } from "@/components/sections/about-profile";
 
 const navigation = [["À propos", "about"], ["Projets", "projects"], ["Compétences", "skills"], ["Parcours", "experience"], ["Contact", "contact"]];
 const toolkit = [
@@ -48,7 +49,7 @@ export function Portfolio() {
         </div>
         <div className="hero-bottom"><span>REACT / SPRING BOOT / PYTHON / GEN AI</span><a href="#about">Découvrir mon univers <ArrowDown size={16} /></a></div>
       </section>
-      <section className="about-section wrap section-space" id="about"><div><p className="eyebrow">01 — À PROPOS</p><h2>Curieux par nature.<br /><em>Ingénieur en devenir.</em></h2></div><div className="about-copy"><p>En dernière année du cycle d’ingénieur en Génie Informatique à l’Université Cadi Ayyad, je m’intéresse à ce qui se passe entre une idée et une application utile.</p><p>Mon terrain de jeu : l’IA générative, les applications web et le DevOps. Des documents juridiques aux données industrielles, j’aime transformer des problèmes concrets en solutions logicielles.</p><p>Je recherche un <strong>stage PFE de 6 mois à partir de janvier 2027</strong>, en IA et développement logiciel.</p><div className="profile-facts"><span><b>03</b> expériences en entreprise</span><span><b>05</b> projets à découvrir</span><span><b>2027</b> diplôme d’ingénieur</span></div><div className="personal-note">Arabe · langue maternelle / Français · DELF B2 / Anglais · B1<br />En dehors du code : échecs, natation et kick-boxing.</div></div></section>
+      <AboutProfile />
       <section className="wrap section-space" id="projects"><Heading label="02 — UNE SÉLECTION DE MES TRAVAUX" title="Des idées devenues" accent="projets." /><div className="projects-toolbar"><p>De l’IA générative aux applications métier.</p><div className="filters" aria-label="Filtrer les projets">{["Tous", "Intelligence artificielle", "Web", "Mobile"].map(name => <button key={name} aria-pressed={filter === name} onClick={() => setFilter(name)}>{name}</button>)}</div></div><p className="sr-only" role="status">{selectedProjects.length} projets affichés</p><div className="project-grid">{selectedProjects.map(project => <article className={`project-card ${project.id === "medical-assistant" ? "featured-project" : ""}`} key={project.id}><div className={`project-visual ${project.category === "Mobile" ? "mobile-project" : ""}`}>{(project.gallery || [project.image!]).map((src, index) => <div className="project-image" key={src}><Image src={src} alt={`${project.title} — aperçu ${index + 1}`} fill sizes="(max-width: 760px) 90vw, 60vw" /></div>)}<span className="project-category">{project.category}</span></div><div className="project-info"><div className="project-title-line"><span className="eyebrow">{String(projectsData.indexOf(project) + 1).padStart(2, "0")} / {project.id === "medical-assistant" ? "PROJET À LA UNE" : "PROJET PERSONNEL"}</span><Code2 size={19} /></div><h3>{project.title}</h3><p>{project.description}</p><div className="tags">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div><a className="project-preview" href={project.image} target="_blank" rel="noreferrer">Voir l’aperçu en grand <ArrowUpRight size={16} /></a></div></article>)}</div></section>
       <section className="wrap section-space" id="skills"><Heading label="03 — MES COMPÉTENCES" title="Boîte à outils" accent="technique." /><p className="section-lead">Une boîte à outils construite par la pratique,<br />l’expérimentation et des projets réels.</p><div className="toolkit">{toolkit.map(({ name, icon: Icon }) => <div className="tool-cell" key={name}><span>{name}</span><Icon aria-hidden="true" /></div>)}</div><SkillDomains /></section>
       <section className="wrap section-space" id="experience"><Heading label="04 — MON PARCOURS" title="Apprendre. Construire." accent="Évoluer." /><ExperienceTimeline /><AcademicJourney /></section>
@@ -57,6 +58,7 @@ export function Portfolio() {
     </main><footer className="wrap site-footer"><a href="#home">anas_halloumi<span className="orange">.</span></a><span>© 2026 Anas Halloumi</span><a href="#home">Retour en haut ↑</a></footer>
   </>;
 }
+
 
 
 

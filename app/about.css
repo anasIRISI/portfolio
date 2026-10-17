@@ -1,0 +1,56 @@
+.profile-introduction { display: grid; grid-template-columns: 1fr 1fr; gap: 9%; align-items: start; }
+.profile-introduction h2 { margin: 25px 0; font-weight: 400; font-size: clamp(35px, 3.6vw, 53px); line-height: 1.16; letter-spacing: -1.8px; }
+.profile-signature { font: 10px var(--font-geist-mono), monospace; color: #b4aaa0; line-height: 1.8; }
+.profile-signature > span { color: #d9955b; padding-inline: 9px; }
+.profile-story > p { color: #aaa9a3; font-size: 15px; line-height: 1.9; margin: 0 0 18px; }
+.profile-story > p:first-child { color: #dedbd4; font-size: 18px; line-height: 1.8; }
+.profile-story strong { font-weight: 500; color: #f2c89f; }
+.profile-interests { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 24px 0 0; padding: 0; }
+.profile-interests li { border: 1px solid #3b3630; background: #171512; color: #cdb9a4; border-radius: 100px; padding: 7px 12px; font-size: 11px; line-height: 1.6; }
+.profile-opportunity { display: flex; gap: 24px; align-items: center; margin-top: 45px; padding: 28px 30px; border: 1px solid #62452d; border-radius: 10px; background: #1b1610; }
+.profile-calendar { display: grid; place-items: center; flex-shrink: 0; width: 52px; height: 52px; border: 1px solid #5e4028; background: #2e2015; border-radius: 12px; color: #eeaa6f; }
+.profile-opportunity-copy { min-width: 0; }
+.profile-opportunity-copy > .eyebrow { margin: 0 0 9px; color: #e5aa76; font-size: 9px; letter-spacing: 1.3px; }
+.profile-opportunity h3 { margin: 0; font-size: 20px; font-weight: 400; line-height: 1.4; letter-spacing: -.3px; }
+.profile-opportunity-copy > p:last-child { margin: 11px 0 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 12px; line-height: 1.7; color: #ad9c8a; }
+.profile-opportunity-copy strong { color: #d3bca6; font-weight: 400; }
+.profile-contact { display: inline-flex; align-items: center; justify-content: center; gap: 24px; flex-shrink: 0; margin-left: auto; padding: 14px 18px; min-height: 46px; border: 1px solid #88603b; border-radius: 5px; color: #f2ceab; font-size: 12px; }
+.profile-numbers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 35px 0; padding: 0; border-block: 1px solid #33302b; }
+.profile-numbers > div { display: flex; flex-direction: column; gap: 13px; margin-block: 26px; padding-inline: 30px; }
+.profile-numbers > div:first-child { padding-left: 0; }
+.profile-numbers > div + div { border-left: 1px solid #33302b; }
+.profile-numbers dt { font-size: 12px; color: #aaa59c; line-height: 1.7; }
+.profile-numbers dd { order: -1; margin: 0; font-size: clamp(35px, 4vw, 54px); font-weight: 400; letter-spacing: -2px; line-height: 1; color: #eeeae1; }
+.profile-personal { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.profile-panel { padding: 26px; border: 1px solid #33312b; border-radius: 9px; background: #111110; min-width: 0; }
+.profile-panel > header { display: flex; align-items: center; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #302e29; }
+.profile-panel > header > svg { color: #c9a782; flex-shrink: 0; }
+.profile-panel h3 { font-size: 16px; font-weight: 400; margin: 0; }
+.profile-panel > header > span { margin-left: auto; color: #a59c90; font-size: 10px; }
+.profile-languages { list-style: none; margin: 17px 0 0; padding: 0; display: grid; gap: 12px; }
+.profile-languages li { display: flex; align-items: baseline; justify-content: space-between; gap: 15px; font-size: 13px; line-height: 1.8; }
+.profile-languages li > span:last-child { color: #a9a397; font-size: 12px; text-align: right; }
+.profile-beyond > p { font-size: 13px; color: #aaa59b; line-height: 1.8; margin: 22px 0; }
+.profile-beyond > ul { display: flex; flex-wrap: wrap; list-style: none; gap: 9px; padding: 0; margin: 0; }
+.profile-beyond li { border: 1px solid #3a3730; border-radius: 5px; padding: 8px 12px; font-size: 12px; color: #d7cdbf; }
+@media (hover: hover) and (pointer: fine) { .profile-contact:hover { background: #332417; } }
+@media (max-width: 900px) {
+  .profile-introduction { gap: 6%; }
+  .profile-opportunity { flex-wrap: wrap; }
+  .profile-contact { margin-left: 76px; }
+}
+@media (max-width: 650px) {
+  .profile-introduction, .profile-personal { grid-template-columns: 1fr; gap: 26px; }
+  .profile-introduction h2 { font-size: 38px; }
+  .profile-story > p { font-size: 14px; }
+  .profile-story > p:first-child { font-size: 17px; }
+  .profile-opportunity { align-items: flex-start; gap: 20px; padding: 24px; margin-top: 30px; }
+  .profile-contact { margin-left: 0; width: 100%; }
+  .profile-opportunity h3 { font-size: 21px; }
+  .profile-numbers { margin-block: 28px; }
+  .profile-numbers > div { padding-inline: 14px; gap: 12px; }
+  .profile-numbers dt { font-size: 10px; line-height: 1.7; }
+  .profile-numbers dd { font-size: 35px; letter-spacing: -1.5px; }
+  .profile-personal { gap: 16px; }
+  .profile-panel { padding: 22px; }
+}

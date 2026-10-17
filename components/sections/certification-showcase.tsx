@@ -2,13 +2,15 @@ import { BrainCircuit, Braces, Database, Layers, Network } from "lucide-react";
 import { SiJavascript, SiReact, SiLaravel, SiPhp } from "react-icons/si";
 import { certificationsData } from "@/data/certifications";
 
-const featuredIds = ["oracle-genai", "oracle-ai-foundations", "rag-ibm"];
-const specializations = ["IA générative", "Fondamentaux de l’IA", "Recherche augmentée · RAG"];
 const groups = [
+  { id: "ai", title: "IA & GenAI", description: "IA générative, fondamentaux et recherche augmentée.", icon: BrainCircuit, ids: ["oracle-genai", "oracle-ai-foundations", "rag-ibm"] },
   { id: "data", title: "Data & Machine Learning", description: "Modélisation et exploration des données.", icon: Database, ids: ["ml-svm", "sql-cert"] },
   { id: "web", title: "Développement web", description: "Des interfaces aux applications côté serveur.", icon: Braces, ids: ["javascript-udemy", "react-meta", "laravel-cert", "php-cert"] },
 ];
 const certificateIcons = {
+  "oracle-genai": BrainCircuit,
+  "oracle-ai-foundations": BrainCircuit,
+  "rag-ibm": Layers,
   "ml-svm": Network,
   "sql-cert": Database,
   "javascript-udemy": SiJavascript,
@@ -23,25 +25,6 @@ export function CertificationShowcase() {
       <div className="certification-intro">
         <p>Approfondir mes connaissances, puis les mettre en pratique.<br />Un parcours entre intelligence artificielle, data et développement.</p>
         <span className="certification-count"><strong>{certificationsData.length.toString().padStart(2, "0")}</strong> certifications</span>
-      </div>
-      <div className="featured-certifications">
-        {featuredIds.map((id, index) => {
-          const certification = certificationsData.find(item => item.id === id)!;
-          const Icon = index === 2 ? Layers : BrainCircuit;
-          return (
-            <article className="featured-credential" key={id}>
-              <div className="credential-topline">
-                <span className={`issuer-wordmark issuer-${certification.issuer.toLowerCase()}`}>{certification.issuer}</span>
-                <Icon size={25} strokeWidth={1.3} aria-hidden="true" />
-              </div>
-              <div className="credential-body">
-                <p className="eyebrow">{specializations[index]}</p>
-                <h3>{certification.title}</h3>
-              </div>
-              <div className="credential-footer"><span>CERTIFICATION</span><span aria-hidden="true">0{index + 1}</span></div>
-            </article>
-          );
-        })}
       </div>
       <div className="certificate-collections" id="certification-domains">
         {groups.map(({ id, title, description, icon: Icon, ids }) => (
