@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./academic.css";
@@ -6,6 +6,8 @@ import "./experience.css";
 import "./education.css";
 import "./certification-domains.css";
 import "./about.css";
+import "./home-hero.css";
+import "./themes.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +18,14 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#080808",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   title: "Anas Halloumi | AI Engineer & Software Developer",
@@ -71,8 +81,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
+      data-theme="dark"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script id="portfolio-theme-init" dangerouslySetInnerHTML={{ __html: `(() => { let theme = 'dark'; try { if (localStorage.getItem('anas-portfolio-theme') === 'light') theme = 'light'; } catch {} document.documentElement.dataset.theme = theme; document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#ffffff' : '#080808'); document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', theme); })();` }} />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

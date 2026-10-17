@@ -1,0 +1,110 @@
+/* Native theme selector: keyboard accessible, with two explicit choices. */
+.theme-control { position: relative; display: inline-flex; align-items: center; width: 156px; height: 44px; flex-shrink: 0; color: #d7cebf; }
+.theme-control select { appearance: none; width: 100%; height: 100%; border: 1px solid #4b453c; border-radius: 5px; padding: 9px 28px 9px 35px; background: #15120e; color: inherit; font: inherit; font-size: 13px; cursor: pointer; touch-action: manipulation; }
+.theme-control > svg { position: absolute; left: 11px; pointer-events: none; }
+.theme-control .theme-chevron { right: 9px; left: auto; }
+.theme-control .theme-icon-light { display: none; }
+.theme-control:focus-within { outline: 2px solid #ffad64; outline-offset: 4px; border-radius: 5px; }
+.theme-control select:focus-visible { outline: none; }
+:root[data-theme="light"] .theme-icon-dark { display: none; }
+:root[data-theme="light"] .theme-icon-light { display: block; }
+
+/* Warm white surfaces and readable ink; photographs keep their original colors. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: 0 0% 100%;
+  --foreground: 34 17% 13%;
+  --muted: 36 24% 95%;
+  --muted-foreground: 33 12% 36%;
+  --border: 35 18% 81%;
+  --primary: 24 76% 35%;
+  --primary-foreground: 0 0% 100%;
+  --light-ink: #28221b;
+  --light-muted: #655d51;
+  --light-accent: #9b4713;
+  --light-border: #dbd3c7;
+  --light-surface: #faf8f4;
+  --light-warm: #fff3e4;
+}
+:root[data-theme="light"] body { background: #ffffff; color: var(--light-ink); }
+:root[data-theme="light"] ::selection { background: #f5c99c; color: #28221b; }
+:root[data-theme="light"] :focus-visible { outline-color: #a44e15; }
+:root[data-theme="light"] em { color: #77634f; }
+
+:root[data-theme="light"] :is(.site-header, .mobile-nav) { background: #fffffff5; border-color: var(--light-border); }
+:root[data-theme="light"] :is(.desktop-nav, .site-footer, .home-name, .home-description, .home-note, .home-profile-caption p, .home-bottom, .eyebrow, .projects-toolbar > p, .section-lead, .tool-cell span, .project-info > p:not(.eyebrow), .contact-bottom p, .social-links a) { color: var(--light-muted); }
+:root[data-theme="light"] :is(.wordmark, .site-footer > a:first-child, .home-profile-caption > span, .home-description strong) { color: var(--light-ink); }
+:root[data-theme="light"] :is(.header-cv, .menu-button, .theme-control select) { background: #faf8f4; color: var(--light-ink); border-color: #cfc4b5; }
+:root[data-theme="light"] .theme-control { color: var(--light-ink); }
+:root[data-theme="light"] .theme-control:focus-within { outline-color: #a44e15; }
+:root[data-theme="light"] :is(.mobile-nav a, .section-space, .home-bottom, .hero-bottom, .contact-bottom) { border-color: var(--light-border); }
+:root[data-theme="light"] :is(.orange, .home-copy h1 em, .contact-section h2 em, .contact-arrow, .profile-story strong, .home-bottom > span > span) { color: var(--light-accent); }
+:root[data-theme="light"] .home-availability { color: #49652e; }
+:root[data-theme="light"] .home-availability > span { background: #567c35; }
+:root[data-theme="light"] .home-name-line { background: #b86c2a; }
+:root[data-theme="light"] .home-portrait { border-color: #c4b19a; }
+:root[data-theme="light"] .home-profile::before { background: radial-gradient(ellipse at center, #ecd5b94d, transparent 70%); }
+
+:root[data-theme="light"] :is(.hero-focus, .focus-controls, .profile-panel, .career-card, .diploma-card, .certificate-tile, .domain-card) { background: var(--light-surface); border-color: var(--light-border); }
+:root[data-theme="light"] :is(.focus-content > p, .profile-story > p, .profile-signature, .profile-numbers dt, .profile-panel > header > span, .profile-languages li > span:last-child, .profile-beyond > p, .domain-description, .domain-footer, .career-intro > p, .career-role, .career-missions li, .career-location, .subsection-description, .diploma-school, .diploma-file-type, .certification-intro > p, .certification-count, .certificate-collection-heading > p, .certificate-tile-issuer, .prize-caption p, .participation-index) { color: var(--light-muted); }
+:root[data-theme="light"] :is(.focus-heading h2, .profile-story > p:first-child, .profile-numbers dd, .domain-footer span, .career-date > p, .career-missions h4, .diploma-period, .certificate-tile h4, .certification-count strong) { color: var(--light-ink); }
+:root[data-theme="light"] :is(.focus-heading, .focus-content > a, .project-info > .eyebrow, .profile-signature > span, .profile-contact, .profile-opportunity-copy > .eyebrow, .career-date .eyebrow, .career-stack .eyebrow, .diploma-body .eyebrow, .diploma-featured .diploma-body .eyebrow, .diploma-cv, .prize-topline, .prize-topline .eyebrow) { color: var(--light-accent); }
+:root[data-theme="light"] :is(.focus-controls, .profile-panel > header, .profile-numbers, .profile-numbers > div + div, .domain-footer, .career-stack, .diploma-cv, .certificate-collection, #certifications .community-highlights) { border-color: var(--light-border); }
+:root[data-theme="light"] :is(.focus-controls button, .filters button) { color: var(--light-muted); }
+:root[data-theme="light"] :is(.focus-controls button[aria-pressed="true"], .profile-opportunity, .domain-ai, .diploma-featured .diploma-card, .prize-card, .career-step:first-child .career-card) { background: var(--light-warm); border-color: #d4af85; }
+:root[data-theme="light"] .focus-controls button[aria-pressed="true"] { color: #864111; }
+
+:root[data-theme="light"] :is(.focus-stack li, .tags li, .career-stack li, .domain-technologies li, .profile-beyond li, .profile-interests li, .diploma-status, .certificate-collection-count, .career-total, .career-type) { background: #f4efe7; border-color: #d8ccba; color: #62503a; }
+:root[data-theme="light"] .domain-ai .domain-technologies li { background: #f6e6d2; border-color: #d2b18b; color: #68421d; }
+:root[data-theme="light"] :is(.profile-calendar, .domain-icon, .certificate-collection-icon, .certificate-symbol, .diploma-icon, .home-corner) { background: #f6ebdb; color: #8d4e17; border-color: #d5b996; }
+:root[data-theme="light"] :is(.domain-ai .domain-icon, .diploma-featured .diploma-icon) { background: #f0b079; color: #352317; border-color: #d99b63; }
+:root[data-theme="light"] .certificate-symbol-javascript-udemy { color: #8d6700; }
+:root[data-theme="light"] .certificate-symbol-react-meta { color: #087185; }
+:root[data-theme="light"] .certificate-symbol-laravel-cert { color: #ab3d24; }
+:root[data-theme="light"] .certificate-symbol-php-cert { color: #515994; }
+:root[data-theme="light"] :is(.profile-opportunity-copy strong, .profile-opportunity-copy > p:last-child, .domain-index) { color: #72573a; }
+:root[data-theme="light"] :is(.profile-panel > header > svg, .career-missions li > svg, .diploma-school > svg, .participation-row > svg) { color: #8d6338; }
+:root[data-theme="light"] .profile-contact { background: #fff9f0; border-color: #b98a57; }
+:root[data-theme="light"] .career-track::before { background: #d4c3af; }
+:root[data-theme="light"] .career-track > span { background: #fff; border-color: #a87947; }
+:root[data-theme="light"] .career-step:first-child .career-track > span { background: #ae5819; border-color: #ae5819; box-shadow: 0 0 0 6px #b1671912; }
+:root[data-theme="light"] .diploma-featured .diploma-meta { border-color: #dcc2a1; }
+:root[data-theme="light"] .diploma-featured .diploma-status { background: #f9e5ca; color: #7f420d; border-color: #cda36f; }
+:root[data-theme="light"] .diploma-status-dot { background: #a65916; }
+
+:root[data-theme="light"] .primary { background: #29231c; color: #fff9f0; }
+:root[data-theme="light"] :is(.text-link, .project-preview) { border-color: #9f8b73; }
+:root[data-theme="light"] .filters button { background: #faf8f4; border-color: #cfc4b5; }
+:root[data-theme="light"] .filters button[aria-pressed="true"] { background: #30271e; border-color: #30271e; color: #fff9f0; }
+:root[data-theme="light"] .featured-project { background: #faf8f4; border-color: var(--light-border); }
+:root[data-theme="light"] .project-visual { background: #f0ede6; }
+:root[data-theme="light"] .featured-project .project-visual { background: #e5eee7; }
+:root[data-theme="light"] .mobile-project { background: #e6ebf2; }
+:root[data-theme="light"] .project-category { color: #40382d; background: #fffffff2; border-color: #cabda9; }
+:root[data-theme="light"] :is(.toolkit, .tool-cell) { border-color: var(--light-border); }
+:root[data-theme="light"] .tool-cell svg { color: #40382f; }
+:root[data-theme="light"] .community-grid { border-color: #d4af85; }
+:root[data-theme="light"] .participation-row + .participation-row { border-color: var(--light-border); }
+:root[data-theme="light"] .prize-number { color: #a55216; }
+:root[data-theme="light"] .prize-number > span { color: #80522a; }
+:root[data-theme="light"] .contact-section { background: #f7f3ec; }
+
+@media (hover: hover) and (pointer: fine) {
+  :root[data-theme="light"] :is(.desktop-nav a:hover, .mobile-nav a:hover, .social-links a:hover, .text-link:hover, .project-preview:hover, .focus-content > a:hover, .home-bottom a:hover, .home-availability:hover, .diploma-cv:hover) { color: #94400e; }
+  :root[data-theme="light"] .primary:hover { background: #8f4413; color: #fff; }
+  :root[data-theme="light"] :is(.header-cv:hover, .profile-contact:hover) { background: #f2e3cf; border-color: #a5753b; }
+  :root[data-theme="light"] .focus-controls button:hover { color: #7d4215; }
+  :root[data-theme="light"] .tool-cell:hover { background: #f4e4cf; }
+  :root[data-theme="light"] :is(.tool-cell:hover span, .tool-cell:hover svg) { color: #67401b; }
+}
+
+@media (max-width: 1279px) { .theme-control { margin-left: auto; } .header-cv { margin-left: 0; } }
+@media (max-width: 600px) {
+  .theme-control { width: 46px; height: 46px; border: 1px solid #4b453c; border-radius: 5px; background: #15120e; }
+  .theme-control > svg { left: 13px; }
+  .theme-control .theme-chevron { display: none; }
+  .theme-control select { position: absolute; inset: 0; padding: 0; opacity: 0; }
+  .theme-control option { color: #28221b; background: #ffffff; }
+  .site-header .header-cv { display: none; }
+  :root[data-theme="light"] .theme-control { background: #faf8f4; border-color: #cfc4b5; }
+}

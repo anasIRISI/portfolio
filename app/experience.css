@@ -9,7 +9,7 @@
 .career-intro > p {
   margin: 0;
   color: #aaa9a3;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.85;
 }
 
@@ -21,16 +21,16 @@
   border: 1px solid #38342e;
   border-radius: 100px;
   padding: 12px 16px;
-  font-size: 11px;
+  font-size: 12px;
   color: #c9b59e;
 }
 
 .career-timeline { list-style: none; padding: 0; margin: 0; }
 .career-step { display: grid; grid-template-columns: 205px 40px minmax(0, 1fr); gap: 0 22px; }
 .career-date { padding-top: 32px; }
-.career-date .eyebrow { color: #ad9b88; font-size: 10px; letter-spacing: 1.3px; }
-.career-date > p { margin: 18px 0 12px; font-size: 14px; line-height: 1.6; color: #e9e5dd; }
-.career-location { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: #a7a39b; }
+.career-date .eyebrow { color: #ad9b88; font-size: 12px; letter-spacing: 1.3px; }
+.career-date > p { margin: 18px 0 12px; font-size: 15px; line-height: 1.6; color: #e9e5dd; }
+.career-location { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: #a7a39b; }
 .career-track { position: relative; }
 .career-track::before { content: ""; position: absolute; width: 1px; top: 0; bottom: 0; left: 50%; background: #3c342b; }
 .career-track > span { position: absolute; top: 35px; left: calc(50% - 5px); width: 11px; height: 11px; border-radius: 50%; border: 1px solid #9e754e; background: #080808; }
@@ -42,17 +42,17 @@
 .career-step:last-child .career-card { margin-bottom: 0; }
 .career-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .career-card h3 { font-size: clamp(28px, 2.8vw, 38px); letter-spacing: -1.2px; font-weight: 500; line-height: 1.1; margin: 0 0 12px; }
-.career-role { font-size: 13px; line-height: 1.7; color: #b5b1a8; margin: 0; }
-.career-type { flex-shrink: 0; padding: 6px 9px; border: 1px solid #44382a; border-radius: 4px; color: #d8ac80; font: 9px var(--font-geist-mono), monospace; line-height: 1.5; }
+.career-role { font-size: 14px; line-height: 1.7; color: #b5b1a8; margin: 0; }
+.career-type { flex-shrink: 0; padding: 6px 9px; border: 1px solid #44382a; border-radius: 4px; color: #d8ac80; font: 12px var(--font-geist-mono), monospace; line-height: 1.5; }
 .career-missions { margin: 28px 0; }
 .career-missions h4 { margin: 0 0 15px; font-size: 16px; line-height: 1.5; font-weight: 500; color: #eee9df; }
 .career-missions ul { list-style: none; display: grid; gap: 11px; padding: 0; margin: 0; }
-.career-missions li { display: flex; align-items: flex-start; gap: 11px; color: #aaa9a3; font-size: 13px; line-height: 1.85; }
+.career-missions li { display: flex; align-items: flex-start; gap: 11px; color: #aaa9a3; font-size: 14px; line-height: 1.85; }
 .career-missions li > svg { margin-top: 5px; flex-shrink: 0; color: #cb9767; }
 .career-stack { border-top: 1px solid #302d27; padding-top: 20px; }
-.career-stack .eyebrow { margin: 0 0 13px; font-size: 9px; letter-spacing: 1.2px; color: #a59c90; }
+.career-stack .eyebrow { margin: 0 0 13px; font-size: 12px; letter-spacing: 1.2px; color: #a59c90; }
 .career-stack ul { display: flex; flex-wrap: wrap; list-style: none; gap: 8px; padding: 0; margin: 0; }
-.career-stack li { padding: 6px 10px; border-radius: 5px; border: 1px solid #3a3731; background: #1c1b17; color: #d8d3c9; font-size: 11px; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; }
+.career-stack li { padding: 6px 10px; border-radius: 5px; border: 1px solid #3a3731; background: #1c1b17; color: #d8d3c9; font-size: 12px; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; }
 
 @media (max-width: 1050px) {
   .career-step { grid-template-columns: 170px 22px minmax(0, 1fr); gap: 0 15px; }
@@ -62,7 +62,7 @@
 
 @media (max-width: 700px) {
   .career-intro { flex-direction: column; align-items: flex-start; gap: 19px; margin: 0 0 30px; }
-  .career-intro > p { font-size: 13px; }
+  .career-intro > p { font-size: 14px; }
   .career-desktop-break { display: none; }
   .career-step { grid-template-columns: 14px minmax(0, 1fr); gap: 0 16px; }
   .career-date { grid-column: 2; grid-row: 1; padding: 5px 0 20px; }
@@ -79,4 +79,10 @@
 @media (max-width: 380px) {
   .career-step { gap: 0 10px; }
   .career-card { padding: 18px; }
+}
+
+
+@media (max-width: 850px) {
+  .career-intro { flex-direction: column; align-items: flex-start; }
+  .career-desktop-break { display: none; }
 }

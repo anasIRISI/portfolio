@@ -13,11 +13,11 @@
 .diploma-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; }
 .diploma-icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; color: #d6b18d; border: 1px solid #41382e; border-radius: 10px; background: #201b16; }
 .diploma-period { margin: 0; font: 14px var(--font-geist-mono), monospace; color: #ede7de; }
-.diploma-status { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #3b3b34; border-radius: 5px; color: #bdbeb2; font-size: 10px; line-height: 1.6; }
+.diploma-status { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #3b3b34; border-radius: 5px; color: #bdbeb2; font-size: 12px; line-height: 1.6; }
 .diploma-status svg { flex-shrink: 0; }
-.diploma-body .eyebrow { color: #aaa198; font-size: 10px; letter-spacing: 1.5px; margin: 0 0 14px; }
+.diploma-body .eyebrow { color: #aaa198; font-size: 12px; letter-spacing: 1.5px; margin: 0 0 14px; }
 .diploma-body h4 { font-size: clamp(20px, 2vw, 26px); line-height: 1.35; font-weight: 400; letter-spacing: -.6px; margin: 0 0 23px; }
-.diploma-school { display: flex; gap: 10px; margin: 0; font-size: 13px; line-height: 1.8; color: #b4afa6; }
+.diploma-school { display: flex; gap: 10px; margin: 0; font-size: 14px; line-height: 1.8; color: #b4afa6; }
 .diploma-school > svg { flex-shrink: 0; margin-top: 3px; color: #9c8d7c; }
 
 .diploma-featured { grid-column: 1 / -1; }
@@ -29,9 +29,9 @@
 .diploma-status-dot { flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: #ffae64; }
 .diploma-featured .diploma-body .eyebrow { color: #f0b47b; }
 .diploma-featured h4 { font-size: clamp(26px, 3vw, 38px); letter-spacing: -1px; max-width: 650px; }
-.diploma-cv { display: flex; align-items: center; gap: 15px; width: fit-content; max-width: 100%; margin-top: 30px; padding: 13px 0; border-top: 1px solid #463b2e; color: #f1d2b3; font-size: 12px; line-height: 1.6; }
+.diploma-cv { display: flex; align-items: center; gap: 15px; width: fit-content; max-width: 100%; margin-top: 30px; padding: 13px 0; border-top: 1px solid #463b2e; color: #f1d2b3; font-size: 13px; line-height: 1.6; }
 .diploma-cv > svg { flex-shrink: 0; }
-.diploma-file-type { color: #b5a38e; font: 9px var(--font-geist-mono), monospace; white-space: nowrap; }
+.diploma-file-type { color: #b5a38e; font: 12px var(--font-geist-mono), monospace; white-space: nowrap; }
 @media (hover: hover) and (pointer: fine) { .diploma-cv:hover { color: #ffad64; } }
 
 @media (max-width: 900px) {
