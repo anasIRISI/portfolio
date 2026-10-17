@@ -1,0 +1,54 @@
+/* The current degree leads; completed qualifications remain fully visible. */
+.diploma-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.diploma-item { min-width: 0; }
+.diploma-card { height: 100%; padding: 30px; border: 1px solid #36332e; border-radius: 10px; background: #111110; }
+.diploma-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; }
+.diploma-icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; color: #d6b18d; border: 1px solid #41382e; border-radius: 10px; background: #201b16; }
+.diploma-period { margin: 0; font: 14px var(--font-geist-mono), monospace; color: #ede7de; }
+.diploma-status { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #3b3b34; border-radius: 5px; color: #bdbeb2; font-size: 10px; line-height: 1.6; }
+.diploma-status svg { flex-shrink: 0; }
+.diploma-body .eyebrow { color: #aaa198; font-size: 10px; letter-spacing: 1.5px; margin: 0 0 14px; }
+.diploma-body h4 { font-size: clamp(20px, 2vw, 26px); line-height: 1.35; font-weight: 400; letter-spacing: -.6px; margin: 0 0 23px; }
+.diploma-school { display: flex; gap: 10px; margin: 0; font-size: 13px; line-height: 1.8; color: #b4afa6; }
+.diploma-school > svg { flex-shrink: 0; margin-top: 3px; color: #9c8d7c; }
+
+.diploma-featured { grid-column: 1 / -1; }
+.diploma-featured .diploma-card { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 40px; padding: 38px; border-color: #695039; background: #1a1611; }
+.diploma-featured .diploma-meta { align-content: start; align-items: flex-start; flex-direction: column; gap: 20px; margin: 0; padding-right: 28px; border-right: 1px solid #43382a; }
+.diploma-featured .diploma-icon { width: 60px; height: 60px; background: #ff9b43; border-color: #ff9b43; color: #21170e; }
+.diploma-featured .diploma-period { font-size: 22px; letter-spacing: -1px; }
+.diploma-featured .diploma-status { color: #f4c79c; background: #302215; border-color: #644327; }
+.diploma-status-dot { flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: #ffae64; }
+.diploma-featured .diploma-body .eyebrow { color: #f0b47b; }
+.diploma-featured h4 { font-size: clamp(26px, 3vw, 38px); letter-spacing: -1px; max-width: 650px; }
+.diploma-cv { display: flex; align-items: center; gap: 15px; width: fit-content; max-width: 100%; margin-top: 30px; padding: 13px 0; border-top: 1px solid #463b2e; color: #f1d2b3; font-size: 12px; line-height: 1.6; }
+.diploma-cv > svg { flex-shrink: 0; }
+.diploma-file-type { color: #b5a38e; font: 9px var(--font-geist-mono), monospace; white-space: nowrap; }
+@media (hover: hover) and (pointer: fine) { .diploma-cv:hover { color: #ffad64; } }
+
+@media (max-width: 900px) {
+  .diploma-card { padding: 25px; }
+  .diploma-featured .diploma-card { grid-template-columns: 200px minmax(0, 1fr); padding: 30px; gap: 28px; }
+  .diploma-featured .diploma-meta { padding-right: 20px; }
+}
+
+@media (max-width: 650px) {
+  .diploma-grid { grid-template-columns: 1fr; gap: 16px; }
+  .diploma-featured .diploma-card { grid-template-columns: 1fr; padding: 25px; gap: 25px; }
+  .diploma-featured .diploma-meta { border-right: 0; border-bottom: 1px solid #43382a; padding: 0 0 24px; flex-direction: row; align-items: center; gap: 15px; }
+  .diploma-featured .diploma-icon { width: 46px; height: 46px; }
+  .diploma-featured .diploma-period { font-size: 20px; }
+  .diploma-featured .diploma-status { flex-basis: auto; }
+  .diploma-body h4 { font-size: 23px; }
+  .diploma-featured h4 { font-size: 28px; }
+  .diploma-cv { flex-wrap: wrap; gap: 9px; }
+  .diploma-file-type { margin-right: auto; }
+}

@@ -16,4 +16,14 @@ export const achievementsData: Achievement[] = [
     title: "Participation",
     event: 'Hackathon "Mémoire, Patrimoine, Innovation"',
   },
+  {
+    id: "skill-up",
+    title: "Participation",
+    event: "Skill Up",
+  },
+  {
+    id: "dev4day",
+    title: "Participation",
+    event: "DEV4DAY",
+  },
 ];

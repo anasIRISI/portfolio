@@ -1,0 +1,38 @@
+.certificate-collections { margin-top: 48px; }
+.certificate-collection { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 36px; padding-block: 32px; border-top: 1px solid #38342f; }
+.certificate-collection:last-child { padding-bottom: 0; }
+.certificate-collection-heading { min-width: 0; }
+.certificate-collection-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid #483a2d; border-radius: 10px; background: #211a14; color: #e6b27d; margin-bottom: 18px; }
+.certificate-collection-heading h3 { font-size: 23px; line-height: 1.3; font-weight: 500; letter-spacing: -.5px; margin: 0 0 12px; }
+.certificate-collection-heading > p { color: #aaa59d; font-size: 12px; line-height: 1.8; margin: 0 0 18px; }
+.certificate-collection-count { display: inline-block; padding: 6px 10px; border: 1px solid #3a342d; border-radius: 100px; font-size: 11px; color: #cfbba5; line-height: 1.5; }
+.certificate-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-content: start; }
+.certificate-tile { min-width: 0; border: 1px solid #38352f; border-radius: 9px; background: #131310; }
+.certificate-tile article { display: flex; align-items: flex-start; gap: 17px; padding: 25px; }
+.certificate-symbol { display: grid; place-items: center; width: 46px; height: 46px; flex-shrink: 0; border-radius: 10px; border: 1px solid #41403a; background: #20201b; color: #d8c6ad; }
+.certificate-symbol-javascript-udemy { color: #e5cb6a; }
+.certificate-symbol-react-meta { color: #85c6d9; }
+.certificate-symbol-laravel-cert { color: #ed9b89; }
+.certificate-symbol-php-cert { color: #b3b8e0; }
+.certificate-tile-copy { min-width: 0; }
+.certificate-tile-issuer { margin: 0 0 10px; color: #beb6aa; font: 10px var(--font-geist-mono), monospace; text-transform: uppercase; letter-spacing: 1.2px; line-height: 1.6; }
+.certificate-tile h4 { margin: 0; font-size: 18px; line-height: 1.5; letter-spacing: -.3px; font-weight: 400; color: #eeeae3; overflow-wrap: anywhere; }
+@media (max-width: 1050px) {
+  .certificate-collection { grid-template-columns: 190px minmax(0, 1fr); gap: 24px; }
+  .certificate-tile article { flex-direction: column; padding: 22px; gap: 18px; }
+}
+@media (max-width: 760px) {
+  .certificate-collection { grid-template-columns: 1fr; gap: 25px; padding-block: 28px; }
+  .certificate-collection-heading { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: 0 14px; }
+  .certificate-collection-icon { grid-row: 1; margin: 0; }
+  .certificate-collection-heading h3 { grid-row: 1; font-size: 23px; margin: 0; }
+  .certificate-collection-heading > p { grid-column: 1 / -1; margin: 15px 0; }
+  .certificate-collection-count { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 500px) {
+  .certificate-tiles { grid-template-columns: 1fr; gap: 12px; }
+  .certificate-tile article { flex-direction: row; padding: 20px; gap: 15px; }
+  .certificate-symbol { width: 40px; height: 40px; }
+  .certificate-tile h4 { font-size: 17px; }
+  .certificate-collection-heading h3 { font-size: 21px; }
+}
