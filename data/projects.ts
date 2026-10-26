@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   description: string;
   category: string;
+  categories?: Array<"AI" | "Web" | "Mobile">;
   technologies: string[];
   image?: string;
   github?: string;
@@ -20,6 +21,27 @@ export const projectsData: Project[] = [
     technologies: ["React.js", "Spring Boot", "LLM", "Gemini API"],
     image: "/Assistant Médical IA.png",
     featured: true,
+  },
+  {
+    id: "sgai",
+    title: "SGAI – Système de Gestion des Absences Intelligent",
+    description:
+      "Une solution de gestion des absences scolaires qui associe une application web d’administration à une application Android de consultation et de pointage. Le web centralise les établissements, classes, étudiants et enseignants, avec suivi des absences, historiques et statistiques d’assiduité. Sur mobile, l’enseignant scanne la classe : la reconnaissance faciale compare les visages aux profils enregistrés pour identifier les étudiants, enregistrer leurs présences et déterminer les absences.",
+    category: "AI / Web / Mobile",
+    categories: ["AI", "Web", "Mobile"],
+    technologies: [
+      "Spring Boot",
+      "React.js",
+      "PostgreSQL",
+      "Android (Java)",
+      "Python",
+      "FastAPI",
+      "DeepFace",
+      "OpenCV",
+      "Intelligence Artificielle",
+    ],
+    image: "/sgai-gestion-absences.png",
+    featured: false,
   },
   {
     id: "legal-assistant",

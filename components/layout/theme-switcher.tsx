@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { ChevronDown, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
 type Theme = "dark" | "light";
 const storageKey = "anas-portfolio-theme";
@@ -32,19 +32,15 @@ export function ThemeSwitcher() {
   const theme = useSyncExternalStore(subscribe, () => document.documentElement.dataset.theme === "light" ? "light" : "dark", () => "dark");
 
   return (
-    <div className="theme-control">
-      <Moon size={17} className="theme-icon-dark" aria-hidden="true" />
-      <Sun size={18} className="theme-icon-light" aria-hidden="true" />
-      <select aria-label="Choisir le thème" value={theme} onChange={event => {
-        const selected: Theme = event.target.value === "light" ? "light" : "dark";
+    <button type="button" className="theme-control" aria-label={theme === "dark" ? "Activer le mode clair" : "Activer le mode sombre"} title={theme === "dark" ? "Activer le mode clair" : "Activer le mode sombre"} onClick={() => {
+        const selected: Theme = theme === "dark" ? "light" : "dark";
         applyTheme(selected);
         try { localStorage.setItem(storageKey, selected); } catch { /* The current choice still applies when storage is unavailable. */ }
         window.dispatchEvent(new Event(changeEvent));
       }}>
-        <option value="dark">Mode sombre</option>
-        <option value="light">Mode clair</option>
-      </select>
-      <ChevronDown size={14} className="theme-chevron" aria-hidden="true" />
-    </div>
+      <Sun size={18} className="theme-icon-dark" aria-hidden="true" />
+      <Moon size={17} className="theme-icon-light" aria-hidden="true" />
+      <span>{theme === "dark" ? "Mode clair" : "Mode sombre"}</span>
+    </button>
   );
 }

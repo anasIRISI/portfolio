@@ -9,7 +9,13 @@ const filters = ["Tous", "Intelligence artificielle", "Web", "Mobile"];
 
 export function ProjectShowcase() {
   const [filter, setFilter] = useState("Tous");
-  const selected = projectsData.filter(project => filter === "Tous" || (filter === "Intelligence artificielle" ? project.category.includes("AI") : project.category === filter));
+  const selected = projectsData.filter(project => {
+    if (filter === "Tous") return true;
+    if (project.categories) {
+      return project.categories.some(category => category === (filter === "Intelligence artificielle" ? "AI" : filter));
+    }
+    return filter === "Intelligence artificielle" ? project.category.includes("AI") : project.category === filter;
+  });
 
   return (
     <>
@@ -25,7 +31,7 @@ export function ProjectShowcase() {
           const images = project.gallery || (project.image ? [project.image] : []);
           const featured = project.id === "medical-assistant";
           return (
-            <article className={`project-card ${featured ? "featured-project" : ""}`} key={project.id} aria-labelledby={`project-${project.id}`}>
+            <article className="project-card" key={project.id} aria-labelledby={`project-${project.id}`}>
               <div className={`project-visual ${project.category === "Mobile" ? "mobile-project" : ""}`}>
                 {images.map((src, index) => (
                   <a className="project-image" href={src} target="_blank" rel="noreferrer" key={src} aria-label={`Agrandir l’aperçu ${index + 1} de ${project.title} (nouvel onglet)`}>
